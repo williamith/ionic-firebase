@@ -17,6 +17,7 @@ export class MembersListPage implements OnInit {
 
   ngOnInit() {
     this.membership = this.membersService.currentMembership;
+    this.membersService.readMembers();
   }
 
   goBackToMembersPage() {

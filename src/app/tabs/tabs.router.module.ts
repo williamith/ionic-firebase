@@ -8,20 +8,29 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'announcements',
         children: [
           {
             path: '',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            loadChildren: '../announcements/announcements.module#AnnouncementsPageModule'
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'events',
         children: [
           {
             path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
+            loadChildren: '../events/events.module#EventsPageModule'
+          }
+        ]
+      },
+      {
+        path: 'members/directory',
+        children: [
+          {
+            path: '',
+            loadChildren: '../members-list/members-list.module#MembersListPageModule'
           }
         ]
       },
@@ -36,14 +45,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/announcements',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/announcements',
     pathMatch: 'full'
   }
 ];

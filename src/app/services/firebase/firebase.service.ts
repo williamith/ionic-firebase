@@ -7,5 +7,5 @@ export class FirebaseService {
 
   constructor() { }
 
-  unsubscribeOnLogOut() {}
+  unsubscribeOnLogOut() { }
 }

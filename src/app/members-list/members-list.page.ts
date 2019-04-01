@@ -24,4 +24,8 @@ export class MembersListPage implements OnInit {
     this.router.navigate(['tabs/members']);
   }
 
+  goToCreateMember() {
+    this.router.navigate(['tabs/members/directory/create-member']);
+  }
+
 }

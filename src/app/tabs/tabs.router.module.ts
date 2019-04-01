@@ -26,6 +26,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'members/directory/create-member',
+        children: [
+          {
+            path: '',
+            loadChildren: '../create-member/create-member.module#CreateMemberPageModule'
+          }
+        ]
+      },
+      {
         path: 'members/directory',
         children: [
           {

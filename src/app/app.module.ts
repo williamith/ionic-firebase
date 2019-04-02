@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { HttpClientModule } from "@angular/common/http";
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 // AF2 Settings
 export const firebaseConfig = {
   apiKey: "AIzaSyB65E4W1Z0FoH8GOfsXydbBaDnDiBO5B3Y",
@@ -29,7 +31,8 @@ export const firebaseConfig = {
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,

@@ -51,7 +51,7 @@ export class CreateMemberPage implements OnInit {
       "Zip": zip,
       "Title": title,
       "Company": company
-    }).then(newMemberRef => {
+    }).then( () => {
       this.router.navigate(['tabs/members/directory']);
     }, error => {
       console.log(error);

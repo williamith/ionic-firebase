@@ -18,7 +18,10 @@ export class MembersPage implements OnInit {
   }
 
   goToMembersList(membership: any) {
+    // Sets the membership variable in Members Service
     this.membersService.currentMembership = membership;
+
+    // Navigates to Members Directory
     this.router.navigate(['tabs/members/directory']);
   }
 

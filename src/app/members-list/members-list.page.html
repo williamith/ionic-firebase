@@ -6,11 +6,22 @@
       </ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-          <ion-icon slot="icon-only" name="add" (click)="goToCreateMember()"></ion-icon>
+      <ion-icon slot="icon-only" name="add" (click)="goToCreateMember()"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
+  <ion-list>
+    <ion-item *ngFor="let member of members">
+      <ion-grid>
+        <ion-row>
+          <ion-label>{{member["Last Name"]}}, {{member["First Name"]}}</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-note>{{member["Address 1"]}}</ion-note>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
 </ion-content>

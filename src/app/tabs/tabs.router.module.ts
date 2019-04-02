@@ -35,6 +35,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'members/directory/member-detail',
+        children: [
+          {
+            path: '',
+            loadChildren: '../member-detail/member-detail.module#MemberDetailPageModule'
+          }
+        ]
+      },
+      {
         path: 'members/directory',
         children: [
           {

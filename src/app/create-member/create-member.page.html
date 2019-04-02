@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>New Member</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button (click)="goBackToMembersDirectoryPage()">
+      <ion-back-button color="primary" (click)="goBackToMembersDirectoryPage()">
       </ion-back-button>
     </ion-buttons>
   </ion-toolbar>
@@ -10,53 +10,48 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
-      <ion-label fixed>First Name</ion-label>
-      <ion-input type="text" [(ngModel)]="firstName"></ion-input>
+    <ion-item color="light">
+      <ion-text>
+        <p>Member Details</p>
+      </ion-text>
     </ion-item>
     <ion-item>
-      <ion-label fixed>Last Name</ion-label>
-      <ion-input type="text" [(ngModel)]="lastName"></ion-input>
+      <ion-input type="text" [(ngModel)]="firstName" placeholder="First Name" clearInput></ion-input>
+      <ion-input type="text" [(ngModel)]="lastName" placeholder="Last Name" clearInput></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label fixed>Email</ion-label>
-      <ion-input type="text" [(ngModel)]="email"></ion-input>
+      <ion-input type="text" [(ngModel)]="title" placeholder="Title" clearInput></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label fixed>Phone</ion-label>
-      <ion-input type="text" [(ngModel)]="phone"></ion-input>
+      <ion-input type="text" [(ngModel)]="company" placeholder="Company" clearInput></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label fixed>Membership</ion-label>
-      <ion-input type="text" [(ngModel)]="membership"></ion-input>
+      <ion-input type="text" [(ngModel)]="email" placeholder="Email" clearInput></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label fixed>Address 1</ion-label>
-      <ion-input type="text" [(ngModel)]="address1"></ion-input>
+      <ion-input type="text" [(ngModel)]="phone" placeholder="Phone" clearInput></ion-input>
+    </ion-item>
+
+    <ion-item color="light">
+      <ion-text>
+        <p>Address</p>
+      </ion-text>
     </ion-item>
     <ion-item>
-      <ion-label fixed>City</ion-label>
-      <ion-input type="text" [(ngModel)]="city"></ion-input>
+      <ion-input type="text" [(ngModel)]="address1" placeholder="Address Line 1" clearInput></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label fixed>State</ion-label>
-      <ion-input type="text" [(ngModel)]="state"></ion-input>
+      <ion-input type="text" [(ngModel)]="address2" placeholder="Address Line 2" clearInput></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label fixed>Zip</ion-label>
-      <ion-input type="text" [(ngModel)]="zip"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label fixed>Title</ion-label>
-      <ion-input type="text" [(ngModel)]="title"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label fixed>Company</ion-label>
-      <ion-input type="text" [(ngModel)]="company"></ion-input>
+      <ion-input type="text" [(ngModel)]="city" placeholder="City" clearInput></ion-input>
+      <ion-input type="text" [(ngModel)]="state" placeholder="State" clearInput></ion-input>
+      <ion-input type="text" [(ngModel)]="zip" placeholder="Zip Code" clearInput></ion-input>
     </ion-item>
   </ion-list>
 
-  <ion-button expand="block" (click)="createMember(firstName, lastName, email, phone, membership, address1, city, state, zip, title, company)">
-    Create Member
+  <ion-button expand="block"
+    (click)="createMember(firstName, lastName, email, phone, address1, address2, city, state, zip, title, company)">
+    Create {{membership}} Member
   </ion-button>
 </ion-content>

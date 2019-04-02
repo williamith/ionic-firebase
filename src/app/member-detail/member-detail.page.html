@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Member Detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" (click)="goBackToMembersListPage()">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-label class="header">{{member["First Name"]}} {{member["Last Name"]}}</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label>{{member["Title"]}}</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-note>{{member["Company"]}}</ion-note>
+        </ion-row>
+        <ion-row>
+          <ion-note>{{member["Email"]}}</ion-note>
+        </ion-row>
+        <ion-row>
+          <ion-note>{{member["Phone"]}}</ion-note>
+        </ion-row>
+        <ion-row>
+          <ion-note>{{member["Address 1"]}}</ion-note>
+        </ion-row>
+        <ion-row>
+          <ion-note>{{member["Address 2"]}}</ion-note>
+        </ion-row>
+        <ion-row>
+          <ion-note>{{member["City"]}}, {{member["State"]}} {{member["Zip"]}}</ion-note>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

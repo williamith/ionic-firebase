@@ -1,0 +1,11 @@
+.header {
+  padding-left: 0;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+@media only screen and (width: 320px) {
+  ion-title {
+    margin: 0;
+  }
+}

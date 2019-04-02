@@ -16,10 +16,19 @@
     <ion-item *ngFor="let member of members">
       <ion-grid>
         <ion-row>
-          <ion-label>{{member["Last Name"]}}, {{member["First Name"]}}</ion-label>
+          <ion-label class="header">{{member["Last Name"]}}, {{member["First Name"]}}</ion-label>
         </ion-row>
         <ion-row>
-          <ion-note>{{member["Address 1"]}}</ion-note>
+          <ion-label color="primary">{{member["Title"]}}</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-note>{{member["Company"]}}</ion-note>
+        </ion-row>
+        <ion-row>
+          <ion-note>{{member["Phone"]}}</ion-note>
+        </ion-row>
+        <ion-row>
+          <ion-note>{{member["Email"]}}</ion-note>
         </ion-row>
       </ion-grid>
     </ion-item>

@@ -2,8 +2,11 @@
   <ion-toolbar>
     <ion-title>Member Detail</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button color="primary" (click)="goBackToMembersListPage()">
+      <ion-back-button color="primary">
       </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMemberEditPage()" class="primary">Edit</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

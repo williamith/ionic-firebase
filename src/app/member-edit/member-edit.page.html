@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Member Edit</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button class="primary">Done</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-label class="header">{{member["First Name"]}} {{member["Last Name"]}}</ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-label>{{member["Title"]}}</ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-note>{{member["Company"]}}</ion-note>
+      </ion-row>
+      <ion-row>
+        <ion-note>{{member["Email"]}}</ion-note>
+      </ion-row>
+      <ion-row>
+        <ion-note>{{member["Phone"]}}</ion-note>
+      </ion-row>
+      <ion-row>
+        <ion-note>{{member["Address 1"]}}</ion-note>
+      </ion-row>
+      <ion-row>
+        <ion-note>{{member["Address 2"]}}</ion-note>
+      </ion-row>
+      <ion-row>
+        <ion-note>{{member["City"]}}, {{member["State"]}} {{member["Zip"]}}</ion-note>
+      </ion-row>
+      <ion-row>&nbsp;</ion-row>
+    </ion-grid>
+  </ion-item>
+  <ion-button color="danger" expand="full" (click)="deleteMember()">Delete Member</ion-button>
+</ion-content>

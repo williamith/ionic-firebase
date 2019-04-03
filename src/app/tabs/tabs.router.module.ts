@@ -35,6 +35,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'members/directory/member-edit',
+        children: [
+          {
+            path: '',
+            loadChildren: '../member-edit/member-edit.module#MemberEditPageModule'
+          }
+        ]
+      },
+      {
         path: 'members/directory/member-detail',
         children: [
           {

@@ -13,13 +13,15 @@ export class CreateMemberPage implements OnInit {
   membership: any;
   memberList: AngularFireList<any>;
 
+  dbRef = this.db.database.ref("Members");
+
   constructor(
     private router: Router,
     public toastController: ToastController,
     private membersService: MembersService,
-    public afDatabase: AngularFireDatabase
+    public db: AngularFireDatabase
   ) {
-    this.memberList = afDatabase.list('Members');
+    this.memberList = db.list('Members');
   }
 
   ngOnInit() {
@@ -43,9 +45,9 @@ export class CreateMemberPage implements OnInit {
     title: string,
     company: string
   ) {
-    const newMemberRef = this.memberList.push({});
+    // const newMemberRef = this.memberList.push({});
 
-    newMemberRef.set({
+    this.dbRef.push({
       "First Name": firstName,
       "Last Name": lastName,
       "Email": email,
@@ -59,7 +61,7 @@ export class CreateMemberPage implements OnInit {
       "Title": title,
       "Company": company
     }).then( () => {
-      this.router.navigate(['tabs/members']);
+      this.router.navigate(['tabs/members/directory']);
       this.presentToastWithOptions();
     }, error => {
       console.log(error);
@@ -73,7 +75,7 @@ export class CreateMemberPage implements OnInit {
       position: 'bottom',
       closeButtonText: 'Close',
       color: 'dark',
-      duration: 5000
+      duration: 3000
     });
     toast.present();
   }

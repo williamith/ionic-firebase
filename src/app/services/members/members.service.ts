@@ -7,19 +7,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MembersService {
-  members: any;
+  members = [];
   membersId: any;
   currentMembership: any;
   currentMember: any;
   currentMemberId: any;
-  membersDbReference = this.db.database.ref("Members");
-
-  url: string = 'https://gmisdatabase.firebaseio.com';
+  membersRef = this.db.database.ref("Members");
 
   constructor(
     private http: HttpClient,
     public db: AngularFireDatabase
-    ) {}
+  ) {}
 
-  
 }

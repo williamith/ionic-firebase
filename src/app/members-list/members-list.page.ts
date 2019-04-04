@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { MembersService } from './../services/members/members.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -5,7 +6,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Member } from '../models/member';
-import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'app-members-list',
@@ -38,16 +38,18 @@ export class MembersListPage implements OnInit {
     // this.membersId = this.membersService.membersId;
     // console.log("From Members Page\n" + this.members);
     this.members$ = this.membersService
-      .getMembers()
+      .readMembers()
       .snapshotChanges()
       .pipe(
-        map(changes =>
-            changes.map(c => ({
+        map(
+          changes => {
+            return changes.map(c => ({
               key: c.payload.key, ...c.payload.val()
             }))
+          }
         )
       );
-  }
+    }
 
   // getKeys() {
   //   this.membersService.membersRef.on('value', snapshot => {

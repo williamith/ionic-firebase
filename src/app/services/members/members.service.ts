@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Observable } from 'rxjs';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Member } from 'src/app/models/member';
 
 
@@ -15,22 +13,21 @@ export class MembersService {
   currentMembership: any;
   currentMember: any;
   currentMemberId: any;
-  membersRef = this.db.list<Member>('Members');
+  membersRef = this.db.list('Members');
 
   constructor(
-    private http: HttpClient,
     public db: AngularFireDatabase
   ) {}
 
-  getMembers() {
+  createMember(member: Member) {
+    return this.membersRef.push(member);
+  }
+
+  readMembers() {
     return this.membersRef;
   }
-
-  addMember(member: Member) {
-    this.membersRef.push(member);
-  }
-
-  removeMember(member: Member) {
+  
+  deleteMember(member: Member) {
     return this.membersRef.remove(member.key);
   }
   

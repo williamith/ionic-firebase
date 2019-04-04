@@ -35,7 +35,7 @@ export class MemberEditPage implements OnInit {
   }
 
   removeMember(member: Member) {
-    this.membersService.removeMember(member)
+    this.membersService.deleteMember(member)
       .then(() => {
         this.router.navigate(['tabs/members/directory']);
         this.presentToastWithOptions();

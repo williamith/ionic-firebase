@@ -14,43 +14,39 @@ export class CreateMemberPage implements OnInit {
   membership: any;
   memberList: AngularFireList<any>;
   member: Member = {
-    ["First Name"]: '',
-    ["Last Name"]: '',
-    ["Email"]: '',
-    ["Phone"]: '',
-    ["Membership"]: this.membership,
-    ["Address Line 1"]: '',
-    ["Address Line 2"]: '',
-    ["City"]: '',
-    ["State"]: '',
-    ["Zip"]: '',
-    ["Title"]: '',
-    ["Company"]: ''
+    ['First Name']: '',
+    ['Last Name']: '',
+    ['Email']: '',
+    ['Phone']: '',
+    ['Membership']: '',
+    ['Address Line 1']: '',
+    ['Address Line 2']: '',
+    ['City']: '',
+    ['State']: '',
+    ['Zip']: '',
+    ['Title']: '',
+    ['Company']: ''
   }
-
-  dbRef = this.db.database.ref("Members");
 
   constructor(
     private router: Router,
     public toastController: ToastController,
-    private membersService: MembersService,
-    public db: AngularFireDatabase
-  ) {
-    this.memberList = db.list('Members');
-  }
+    public db: AngularFireDatabase,
+    private membersService: MembersService
+  ) {}
 
   ngOnInit() {
-    this.membership = this.membersService.currentMembership;
+    this.member.Membership = this.membersService.currentMembership;
   }
 
   goBackToMembersDirectoryPage() {
     this.router.navigate(['tabs/members/directory']);
   }
 
-  addMember(member: Member) {
-    this.membersService.addMember(member).then(ref => {
+  addMember() {
+    this.membersService.createMember(this.member).then(ref => {
       console.log(ref.key);
-    });
+    })
   }
 
   // createMember(
@@ -69,18 +65,18 @@ export class CreateMemberPage implements OnInit {
   //   // const newMemberRef = this.memberList.push({});
 
   //   this.dbRef.push({
-  //     "First Name": firstName,
-  //     "Last Name": lastName,
-  //     "Email": email,
-  //     "Phone": phone,
-  //     "Membership": this.membership,
-  //     "Address 1": address1,
-  //     "Address 2": address2,
-  //     "City": city,
-  //     "State": state,
-  //     "Zip": zip,
-  //     "Title": title,
-  //     "Company": company
+  //     'First Name': firstName,
+  //     'Last Name': lastName,
+  //     'Email': email,
+  //     'Phone': phone,
+  //     'Membership': this.membership,
+  //     'Address 1': address1,
+  //     'Address 2': address2,
+  //     'City': city,
+  //     'State': state,
+  //     'Zip': zip,
+  //     'Title': title,
+  //     'Company': company
   //   }).then( () => {
   //     this.router.navigate(['tabs/members/directory']);
   //     this.presentToastWithOptions();

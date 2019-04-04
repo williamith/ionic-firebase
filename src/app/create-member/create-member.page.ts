@@ -31,8 +31,8 @@ export class CreateMemberPage implements OnInit {
   constructor(
     private router: Router,
     public toastController: ToastController,
-    public db: AngularFireDatabase,
-    private membersService: MembersService
+    private membersService: MembersService,
+    public db: AngularFireDatabase
   ) {}
 
   ngOnInit() {
@@ -43,9 +43,11 @@ export class CreateMemberPage implements OnInit {
     this.router.navigate(['tabs/members/directory']);
   }
 
-  addMember() {
-    this.membersService.createMember(this.member).then(ref => {
+  createMember(member: Member) {
+    this.membersService.createMember(member).then(ref => {
       console.log(ref.key);
+      this.router.navigate(['tabs/members/directory']);
+      this.presentToastWithOptions();
     })
   }
 

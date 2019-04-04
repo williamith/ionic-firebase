@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar  color="success">
     <ion-title>New Member</ion-title>
     <ion-buttons slot="start">
       <ion-back-button color="primary" (click)="goBackToMembersDirectoryPage()">
@@ -50,7 +50,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-button expand="full" (click)="addMember()">
+  <ion-button expand="full" (click)="createMember(member)">
     Create {{membership}} Member
   </ion-button>
 </ion-content>

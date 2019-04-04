@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { MembersService } from './../services/members/members.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ActionSheetController } from '@ionic/angular';
 import { Member } from '../models/member';
 
 @Component({
@@ -13,7 +13,7 @@ import { Member } from '../models/member';
   styleUrls: ['./member-edit.page.scss'],
 })
 export class MemberEditPage implements OnInit {
-  member: {};
+  member: Member;
   memberId: any;
   url: string = environment.firebaseConfig.databaseURL;
 
@@ -24,7 +24,8 @@ export class MemberEditPage implements OnInit {
     public toastController: ToastController,
     private membersService: MembersService,
     private http: HttpClient,
-    public db: AngularFireDatabase 
+    public db: AngularFireDatabase,
+    public actionSheetController: ActionSheetController
   ) { }
 
   ngOnInit() {
@@ -40,6 +41,29 @@ export class MemberEditPage implements OnInit {
         this.router.navigate(['tabs/members/directory']);
         this.presentToastWithOptions();
       })
+  }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Albums',
+      buttons: [{
+        text: 'Delete',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+
+          console.log(`From the Member Edit Page: ${this.membersService.currentMember.key}`);
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 
   async presentToastWithOptions() {

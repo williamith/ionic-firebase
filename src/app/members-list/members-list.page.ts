@@ -3,7 +3,6 @@ import { MembersService } from './../services/members/members.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Member } from '../models/member';
 
@@ -17,11 +16,11 @@ export class MembersListPage implements OnInit {
   membership: string;
   members: any;
   membersId: any;
+  membersArray: Member[];
 
   observable: any;
   constructor(
     private router: Router,
-    private navController: NavController,
     private membersService: MembersService,
     public db: AngularFireDatabase
   ) { }
@@ -29,33 +28,66 @@ export class MembersListPage implements OnInit {
   ngOnInit() {
     this.membership = this.membersService.currentMembership;
 
-    // this.observable = this.db.list("Members").valueChanges();
-    // this.observable.subscribe(response => {
-    //   this.members = Object.values(response);
-    //   this.getKeys();
-    // });
-    // this.members = this.membersService.members;
-    // this.membersId = this.membersService.membersId;
-    // console.log("From Members Page\n" + this.members);
-    this.members$ = this.membersService
-      .readMembers()
-      .snapshotChanges()
-      .pipe(
-        map(
-          changes => {
-            return changes.map(c => ({
-              key: c.payload.key, ...c.payload.val()
-            }))
-          }
-        )
-      );
-    }
+    this.members$ = this.membersService.membersRef.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.val() as Member;
+          const id = a.payload.key;
+          // this.membersArray.push({
+          //   key?: a.payload.key,
+          //   ['First Name']: string,
+          //   ['Last Name']: string,
+          //   ['Email']: string,
+          //   ['Phone']: string,
+          //   ['Membership']: string,
+          //   ['Address Line 1']: string,
+          //   ['Address Line 2']: string,
+          //   ['City']: string,
+          //   ['State']: string,
+          //   ['Zip']: string,
+          //   ['Title']: string,
+          //   ['Company']: string;
+          // })
+          console.log(id + " " + Object.keys(data));
+          return { id, ...data };
+        });
+      }));
+  }
+
+  // this.observable = this.membersService.membersRef.snapshotChanges();
+  // this.observable.subscribe(response => {
+  //   console.log(response);
+  //   console.log(Object.keys(response));
+  // });
+  // this.members = this.membersService.members;
+  // this.membersId = this.membersService.membersId;
+  // console.log("From Members Page\n" + this.members);
+
+  // this.members$ = this.membersService
+  //   .readMembers()
+  //   .snapshotChanges()
+  //   .pipe(
+  //     map(
+  //       changes => {
+  //         return changes.map(c => ({
+  //           key: c.payload.key, ...c.payload.val()
+  //         }))
+  //       }
+  //     )
+  //   );
+  // }
 
   // getKeys() {
-  //   this.membersService.membersRef.on('value', snapshot => {
-  //     this.membersId = Object.keys(snapshot.val());
-  //     console.log(this.membersId);
-  //   });
+  //   this.membersService.membersRef.snapshotChanges()
+  //     .pipe(
+  //       map(
+  //         changes => {
+  //           return changes.map(c => ({
+  //             key: c.payload.key, ...c.payload.val()
+  //           }))
+  //         }
+  //       )
+  //     );
   // }
 
   goToCreateMember() {

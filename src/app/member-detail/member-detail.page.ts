@@ -22,7 +22,7 @@ export class MemberDetailPage implements OnInit {
   ngOnInit() {
     this.member = this.membersService.currentMember;
     this.memberId = this.membersService.currentMemberId;
-    console.log(this.memberId);
+    console.log(`From Member Detail Page: "${this.membersService.currentMember}`);
   }
 
   goToMemberEditPage() {

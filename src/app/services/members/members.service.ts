@@ -11,7 +11,7 @@ export class MembersService {
   members = [];
   membersId: any;
   currentMembership: any;
-  currentMember: any;
+  currentMember: Member;
   currentMemberId: any;
   membersRef = this.db.list('Members');
 

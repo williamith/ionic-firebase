@@ -5,6 +5,7 @@ import { MembersService } from './../services/members/members.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { Member } from '../models/member';
 
 @Component({
   selector: 'app-member-edit',
@@ -33,24 +34,12 @@ export class MemberEditPage implements OnInit {
     console.log(this.memberId);
   }
 
-  deleteMember() {
-    // console.log(this.membersService.db.database.ref("Members").child(this.memberId).toString());
-    this.dbRef.ref.child(this.memberId)
-      .remove()
-      .then(function () {
+  removeMember(member: Member) {
+    this.membersService.removeMember(member)
+      .then(() => {
         this.router.navigate(['tabs/members/directory']);
         this.presentToastWithOptions();
       })
-      .catch(function (error) {
-        console.log(error);
-      });
-    // this.http.get(`${this.url}/Members/${this.memberId}.json`)
-    //   .subscribe(response => {
-    //     console.log(response);
-    //   });
-
-    this.router.navigate(['tabs/members/directory']);
-    this.presentToastWithOptions();
   }
 
   async presentToastWithOptions() {

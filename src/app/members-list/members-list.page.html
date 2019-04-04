@@ -15,7 +15,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let member of members; let i = index" (click)="goToMemberDetailsPage(member, i)">
+    <ion-item detail="true" *ngFor="let member of members$ | async; let i = index" (click)="goToMemberDetailsPage(member, i)">
       <ion-grid>
         <ion-row>
           <ion-label class="header">{{member["Last Name"]}}, {{member["First Name"]}}</ion-label>
@@ -33,7 +33,7 @@
           <ion-note>{{member["Email"]}}</ion-note>
         </ion-row>
         <ion-row>
-          <ion-note>{{member.Name}}</ion-note>
+          <ion-note>{{member.key}}</ion-note>
         </ion-row>
       </ion-grid>
     </ion-item>

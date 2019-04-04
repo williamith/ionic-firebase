@@ -1,3 +1,4 @@
+import { Member } from './../models/member';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
@@ -12,6 +13,20 @@ import { MembersService } from '../services/members/members.service';
 export class CreateMemberPage implements OnInit {
   membership: any;
   memberList: AngularFireList<any>;
+  member: Member = {
+    ["First Name"]: '',
+    ["Last Name"]: '',
+    ["Email"]: '',
+    ["Phone"]: '',
+    ["Membership"]: this.membership,
+    ["Address Line 1"]: '',
+    ["Address Line 2"]: '',
+    ["City"]: '',
+    ["State"]: '',
+    ["Zip"]: '',
+    ["Title"]: '',
+    ["Company"]: ''
+  }
 
   dbRef = this.db.database.ref("Members");
 
@@ -32,41 +47,47 @@ export class CreateMemberPage implements OnInit {
     this.router.navigate(['tabs/members/directory']);
   }
 
-  createMember(
-    firstName: string,
-    lastName: string,
-    email: string,
-    phone: string,
-    address1: string,
-    address2: string,
-    city: string,
-    state: string,
-    zip: string,
-    title: string,
-    company: string
-  ) {
-    // const newMemberRef = this.memberList.push({});
-
-    this.dbRef.push({
-      "First Name": firstName,
-      "Last Name": lastName,
-      "Email": email,
-      "Phone": phone,
-      "Membership": this.membership,
-      "Address 1": address1,
-      "Address 2": address2,
-      "City": city,
-      "State": state,
-      "Zip": zip,
-      "Title": title,
-      "Company": company
-    }).then( () => {
-      this.router.navigate(['tabs/members/directory']);
-      this.presentToastWithOptions();
-    }, error => {
-      console.log(error);
+  addMember(member: Member) {
+    this.membersService.addMember(member).then(ref => {
+      console.log(ref.key);
     });
   }
+
+  // createMember(
+  //   firstName: string,
+  //   lastName: string,
+  //   email: string,
+  //   phone: string,
+  //   address1: string,
+  //   address2: string,
+  //   city: string,
+  //   state: string,
+  //   zip: string,
+  //   title: string,
+  //   company: string
+  // ) {
+  //   // const newMemberRef = this.memberList.push({});
+
+  //   this.dbRef.push({
+  //     "First Name": firstName,
+  //     "Last Name": lastName,
+  //     "Email": email,
+  //     "Phone": phone,
+  //     "Membership": this.membership,
+  //     "Address 1": address1,
+  //     "Address 2": address2,
+  //     "City": city,
+  //     "State": state,
+  //     "Zip": zip,
+  //     "Title": title,
+  //     "Company": company
+  //   }).then( () => {
+  //     this.router.navigate(['tabs/members/directory']);
+  //     this.presentToastWithOptions();
+  //   }, error => {
+  //     console.log(error);
+  //   });
+  // }
 
   async presentToastWithOptions() {
     const toast = await this.toastController.create({

@@ -1,3 +1,4 @@
+import { MembersService } from './services/members/members.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -38,7 +39,8 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    MembersService
   ],
   bootstrap: [AppComponent]
 })

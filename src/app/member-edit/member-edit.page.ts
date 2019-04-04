@@ -38,21 +38,20 @@ export class MemberEditPage implements OnInit {
   removeMember(member: Member) {
     this.membersService.deleteMember(member)
       .then(() => {
-        this.router.navigate(['tabs/members/directory']);
+        this.router.navigate(['tabs/members']);
         this.presentToastWithOptions();
       })
   }
 
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
-      header: 'Albums',
       buttons: [{
         text: 'Delete',
         role: 'destructive',
         icon: 'trash',
         handler: () => {
-
-          console.log(`From the Member Edit Page: ${this.membersService.currentMember.key}`);
+          this.membersService.deleteMember(this.membersService.currentMember);
+          this.router.navigate(['tabs/members']);
         }
       }, {
         text: 'Cancel',

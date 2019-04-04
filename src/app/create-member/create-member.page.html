@@ -5,16 +5,23 @@
       <ion-back-button (click)="goBackToMembersDirectoryPage()">
       </ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="createMember()">Done</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item color="light">
+    <ion-item color="medium">
       <ion-text>
-        <p>Member Details</p>
+        <p>Membership - {{member['Membership']}}</p>
       </ion-text>
     </ion-item>
+    <ion-item color="light">
+        <ion-text>
+          <p>Member Details</p>
+        </ion-text>
+      </ion-item>
     <ion-item>
       <ion-input type="text" [(ngModel)]="member['First Name']" placeholder="First Name" clearInput></ion-input>
       <ion-input type="text" [(ngModel)]="member['Last Name']" placeholder="Last Name" clearInput></ion-input>
@@ -31,7 +38,6 @@
     <ion-item>
       <ion-input type="tel" [(ngModel)]="member['Phone']" placeholder="Phone" clearInput></ion-input>
     </ion-item>
-
     <ion-item color="light">
       <ion-text>
         <p>Address</p>
@@ -48,9 +54,4 @@
       <ion-input type="text" [(ngModel)]="member['State']" placeholder="State" clearInput></ion-input>
       <ion-input type="text" [(ngModel)]="member['Zip']" placeholder="Zip Code" clearInput></ion-input>
     </ion-item>
-  </ion-list>
-
-  <ion-button expand="full" (click)="createMember()">
-    Create {{membership}} Member
-  </ion-button>
 </ion-content>

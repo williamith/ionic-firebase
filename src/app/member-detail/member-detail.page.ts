@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from  "@angular/common/http";
-import { MembersService } from '../services/members/members.service';
 import { Router } from '@angular/router';
+import { MembersService } from '../services/members/members.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -9,20 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./member-detail.page.scss'],
 })
 export class MemberDetailPage implements OnInit {
-  member: any = {};
+  member: any;
   memberId: any;
-  url: string = 'https://gmisdatabase.firebaseio.com';
 
-  constructor(
-    private router: Router,
-    private http: HttpClient,
-    private membersService: MembersService
-  ) { }
+  constructor(private router: Router, private membersService: MembersService) {}
 
   ngOnInit() {
-    this.member = this.membersService.currentMember;
-    this.memberId = this.membersService.currentMemberId;
-    console.log(`From Member Detail Page: "${this.membersService.currentMember}`);
+    this.member = this.membersService.currentMember
+    console.log(`From Member Detail Page: ${this.membersService.currentMember.key.toString()}`);
   }
 
   goToMemberEditPage() {

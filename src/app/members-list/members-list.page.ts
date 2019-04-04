@@ -14,9 +14,7 @@ import { Member } from '../models/member';
 export class MembersListPage implements OnInit {
   members$: Observable<Member[]>;
   membership: string;
-  members: any;
-  membersId: any;
-  membersArray: Member[];
+  membersArray: Member[] = [];
 
   observable: any;
   constructor(
@@ -33,71 +31,38 @@ export class MembersListPage implements OnInit {
         return actions.map(a => {
           const data = a.payload.val() as Member;
           const id = a.payload.key;
-          // this.membersArray.push({
-          //   key?: a.payload.key,
-          //   ['First Name']: string,
-          //   ['Last Name']: string,
-          //   ['Email']: string,
-          //   ['Phone']: string,
-          //   ['Membership']: string,
-          //   ['Address Line 1']: string,
-          //   ['Address Line 2']: string,
-          //   ['City']: string,
-          //   ['State']: string,
-          //   ['Zip']: string,
-          //   ['Title']: string,
-          //   ['Company']: string;
-          // })
-          console.log(id + " " + Object.keys(data));
+          this.membersArray.push({
+            key: id,
+            ['First Name']: data['First Name'],
+            ['Last Name']: data['Last Name'],
+            ['Email']: data['Email'],
+            ['Phone']: data['Phone'],
+            ['Membership']: data['Membership'],
+            ['Address Line 1']: data['Address Line 1'],
+            ['Address Line 2']: data['Address Line 2'],
+            ['City']: data['City'],
+            ['State']: data['State'],
+            ['Zip']: data['Zip'],
+            ['Title']: data['Title'],
+            ['Company']: data['Company']
+          });
           return { id, ...data };
         });
       }));
+
+    console.log(this.membersArray);
   }
-
-  // this.observable = this.membersService.membersRef.snapshotChanges();
-  // this.observable.subscribe(response => {
-  //   console.log(response);
-  //   console.log(Object.keys(response));
-  // });
-  // this.members = this.membersService.members;
-  // this.membersId = this.membersService.membersId;
-  // console.log("From Members Page\n" + this.members);
-
-  // this.members$ = this.membersService
-  //   .readMembers()
-  //   .snapshotChanges()
-  //   .pipe(
-  //     map(
-  //       changes => {
-  //         return changes.map(c => ({
-  //           key: c.payload.key, ...c.payload.val()
-  //         }))
-  //       }
-  //     )
-  //   );
-  // }
-
-  // getKeys() {
-  //   this.membersService.membersRef.snapshotChanges()
-  //     .pipe(
-  //       map(
-  //         changes => {
-  //           return changes.map(c => ({
-  //             key: c.payload.key, ...c.payload.val()
-  //           }))
-  //         }
-  //       )
-  //     );
-  // }
 
   goToCreateMember() {
     this.router.navigate(['tabs/members/directory/create-member']);
   }
 
-  goToMemberDetailsPage(member: any, index: any) {
-    this.membersService.currentMember = member;
-    this.membersService.currentMemberId = member.key;
+  goToMemberDetailsPage(index: any) {
+    this.membersService.currentMember = this.membersArray[index];
+    // this.membersService.currentMemberId = this.membersArray[index].key;
     this.router.navigate(['tabs/members/directory/member-detail']);
+    // console.log(this.membersService.currentMember.key);
+    // console.log(this.membersService.currentMember['First Name']);
   }
 
 }

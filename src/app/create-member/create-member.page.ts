@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MembersService } from '../services/members/members.service';
@@ -11,6 +10,7 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./create-member.page.scss'],
 })
 export class CreateMemberPage implements OnInit {
+  // As user enters form data store it here
   member: Member = {
     ['First Name']: '',
     ['Last Name']: '',
@@ -26,11 +26,10 @@ export class CreateMemberPage implements OnInit {
     ['Company']: ''
   }
 
-  constructor(
-    private router: Router, private membersService: MembersService, public toastController: ToastController) {}
+  constructor(private router: Router, private membersService: MembersService, public toastController: ToastController) {}
 
   ngOnInit() {
-    this.member.Membership = this.membersService.currentMembership;
+    this.member['Membership'] = this.membersService.selectedMembership;
   }
 
   goBackToMembersDirectoryPage() {

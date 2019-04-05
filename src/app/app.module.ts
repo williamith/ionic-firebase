@@ -1,4 +1,3 @@
-import { MembersService } from './services/members/members.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -9,21 +8,11 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HttpClientModule } from "@angular/common/http";
+import { MembersService } from './services/members/members.service';
 
-// Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
-
-// AF2 Settings
-export const firebaseConfig = {
-  apiKey: "AIzaSyB65E4W1Z0FoH8GOfsXydbBaDnDiBO5B3Y",
-  authDomain: "gmisdatabase.firebaseapp.com",
-  databaseURL: "https://gmisdatabase.firebaseio.com",
-  projectId: "gmisdatabase",
-  storageBucket: "gmisdatabase.appspot.com",
-  messagingSenderId: "1091663065763"
-};
 
 @NgModule({
   declarations: [AppComponent],

@@ -14,8 +14,8 @@ export class MemberDetailPage implements OnInit {
   constructor(private router: Router, private membersService: MembersService) {}
 
   ngOnInit() {
-    this.member = this.membersService.currentMember
-    console.log(`From Member Detail Page: ${this.membersService.currentMember.key.toString()}`);
+    this.member = this.membersService.selectedMember
+    console.log(`From Member Detail Page: ${this.membersService.selectedMember.key.toString()}`);
   }
 
   goToMemberEditPage() {

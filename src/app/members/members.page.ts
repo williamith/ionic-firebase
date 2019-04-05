@@ -1,6 +1,6 @@
-import { MembersService } from './../services/members/members.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MembersService } from './../services/members/members.service';
 
 @Component({
   selector: 'app-members',
@@ -8,21 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./members.page.scss'],
 })
 export class MembersPage implements OnInit {
-  
-  constructor(
-    private membersService: MembersService,
-    private router: Router
-  ) { }
+  constructor(private membersService: MembersService, private router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  goToMembersList(membership: any) {
-    // Sets the membership variable in Members Service
-    this.membersService.currentMembership = membership;
-
-    // Navigates to Members Directory
+  goToMembersList(membership: string) {
+    this.membersService.selectedMembership = membership;
     this.router.navigate(['tabs/members/directory']);
   }
-
 }

@@ -1,9 +1,6 @@
-import { AngularFireDatabase } from 'angularfire2/database';
-import { environment } from './../../environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { MembersService } from './../services/members/members.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MembersService } from './../services/members/members.service';
 import { ToastController, ActionSheetController } from '@ionic/angular';
 import { Member } from '../models/member';
 
@@ -15,32 +12,14 @@ import { Member } from '../models/member';
 export class MemberEditPage implements OnInit {
   member: Member;
   memberId: any;
-  url: string = environment.firebaseConfig.databaseURL;
 
-  dbRef = this.db.database.ref("Members");
-
-  constructor(
-    private router: Router,
-    public toastController: ToastController,
-    private membersService: MembersService,
-    private http: HttpClient,
-    public db: AngularFireDatabase,
-    public actionSheetController: ActionSheetController
-  ) { }
+  constructor(private router: Router, private membersService: MembersService, public toastController: ToastController, public actionSheetController: ActionSheetController) {}
 
   ngOnInit() {
-    this.member = this.membersService.currentMember;
-    this.memberId = this.membersService.currentMemberId;
+    this.member = this.membersService.selectedMember;
+    this.memberId = this.membersService.selectedMemberId;
     console.log(this.member);
     console.log(this.memberId);
-  }
-
-  removeMember(member: Member) {
-    this.membersService.deleteMember(member)
-      .then(() => {
-        this.router.navigate(['tabs/members']);
-        this.presentToastWithOptions();
-      })
   }
 
   async presentActionSheet() {
@@ -50,8 +29,9 @@ export class MemberEditPage implements OnInit {
         role: 'destructive',
         icon: 'trash',
         handler: () => {
-          this.membersService.deleteMember(this.membersService.currentMember);
+          this.membersService.deleteMember(this.membersService.selectedMember);
           this.router.navigate(['tabs/members']);
+          this.presentToastWithOptions();
         }
       }, {
         text: 'Cancel',
@@ -76,5 +56,11 @@ export class MemberEditPage implements OnInit {
     });
     toast.present();
   }
-
+  // removeMember(member: Member) {
+  //   this.membersService.deleteMember(member)
+  //     .then(() => {
+  //       this.router.navigate(['tabs/members']);
+  //       this.presentToastWithOptions();
+  //     })
+  // }
 }

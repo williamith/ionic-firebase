@@ -29,7 +29,7 @@ export class CreateMemberPage implements OnInit {
   constructor(private router: Router, private membersService: MembersService, public toastController: ToastController) {}
 
   ngOnInit() {
-    this.member['Membership'] = this.membersService.selectedMembership;
+    this.member['Membership'] = this.membersService.membership;
   }
 
   goBackToMembersDirectoryPage() {

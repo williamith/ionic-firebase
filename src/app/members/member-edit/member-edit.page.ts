@@ -16,8 +16,8 @@ export class MemberEditPage implements OnInit {
   constructor(private router: Router, private membersService: MembersService, public toastController: ToastController, public actionSheetController: ActionSheetController) {}
 
   ngOnInit() {
-    this.member = this.membersService.selectedMember;
-    this.memberId = this.membersService.selectedMemberId;
+    this.member = this.membersService.member;
+    this.memberId = this.membersService.memberId;
     console.log(this.member);
     console.log(this.memberId);
   }
@@ -29,7 +29,7 @@ export class MemberEditPage implements OnInit {
         role: 'destructive',
         icon: 'trash',
         handler: () => {
-          this.membersService.deleteMember(this.membersService.selectedMember);
+          this.membersService.deleteMember(this.membersService.member);
           this.router.navigate(['tabs/members']);
           this.presentToastWithOptions();
         }

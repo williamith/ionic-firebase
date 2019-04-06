@@ -3,14 +3,48 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
-  { path: '',
+  {
+    path: 'app',
     component: TabsPage,
     children: [
-      { path: 'announcements', loadChildren: '../announcements/announcements.module#AnnouncementsPageModule' },
-      { path: 'events', loadChildren: '../events/events.module#EventsPageModule' },
-      { path: 'members', loadChildren: '../members/members.module#MembersPageModule' },
-      { path: '**', redirectTo: 'announcements', pathMatch: 'full' }
+      {
+        path: 'announcements',
+        children: [
+          {
+            path: '',
+            loadChildren: '../announcements/announcements.module#AnnouncementsPageModule'
+          }
+        ]
+      },
+      {
+        path: 'events',
+        children: [
+          {
+            path: '',
+            loadChildren: '../events/events.module#EventsPageModule'
+          }
+        ]
+      },
+      {
+        path: 'members',
+        children: [
+          {
+            path: '',
+            loadChildren: '../members/members.module#MembersPageModule'
+          }
+        ]
+      },
+      {
+        path: '',
+        redirectTo: '/app/announcements',
+        pathMatch: 'full'
+      }
     ]
+  },
+  {
+    path: '',
+    redirectTo: '/app/announcements',
+    pathMatch: 'full'
   }
 ];
 
@@ -20,4 +54,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

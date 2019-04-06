@@ -14,12 +14,12 @@ export class MemberDetailPage implements OnInit {
   constructor(private router: Router, private membersService: MembersService) {}
 
   ngOnInit() {
-    this.member = this.membersService.selectedMember
-    console.log(`From Member Detail Page: ${this.membersService.selectedMember.key.toString()}`);
+    this.member = this.membersService.member
+    console.log(`From Member Detail Page: ${this.membersService.member.key.toString()}`);
   }
 
   goToMemberEditPage() {
-    this.router.navigate(['tabs/members/directory/member-edit']);
+    this.router.navigateByUrl('members/directory/member-edit');
   }
 
 }

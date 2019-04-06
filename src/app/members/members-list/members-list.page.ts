@@ -22,7 +22,7 @@ export class MembersListPage implements OnInit {
   ngOnInit() {
     console.log(this.membersService.readMembers());
 
-    // this.membership = this.membersService.selectedMembership;
+    // this.membership = this.membersService.membership;
 
     // this.members$ = this.membersService.membersRef.snapshotChanges().pipe(
     //   map(actions => {
@@ -55,7 +55,7 @@ export class MembersListPage implements OnInit {
   }
 
   goToMemberDetailsPage(index: any) {
-    this.membersService.selectedMember = this.membersArray[index];
+    this.membersService.member = this.membersArray[index];
     this.router.navigate(['tabs/members/directory/member-detail']);
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Member } from 'src/app/members/shared/member';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,23 +9,27 @@ export class MembersService {
   members = [];
   membersId: any;
   membership: string;
-  member: Member;
+  member: any;
   memberId: any;
   membersRef: any;
 
-  constructor(public db: AngularFirestore) {}
+  constructor(private db: AngularFirestore) {}
 
-  createMember(member: Member) {
+  getMembers(): Observable<any[]>{
+    return this.db.collection('members').valueChanges();
+  }
+
+  createMember(member: any) {
     return this.membersRef.push(member);
   }
 
   readMembers() {
-    return this.membersRef.query.orderByChild("Membership").equalTo(this.membership).on("value", function(snapshot) {
+    return this.membersRef.query.orderByChild('Membership').equalTo(this.membership).on('value', function(snapshot) {
       console.log(Object.values(snapshot.val()));
     });
   }
   
-  deleteMember(member: Member) {
+  deleteMember(member: any) {
     return this.membersRef.remove(member.key);
   }
 }

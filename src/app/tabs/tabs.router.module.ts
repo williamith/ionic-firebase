@@ -3,84 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
-  {
-    path: 'tabs',
+  { path: '',
     component: TabsPage,
     children: [
-      {
-        path: 'announcements',
-        children: [
-          {
-            path: '',
-            loadChildren: '../announcements/announcements.module#AnnouncementsPageModule'
-          }
-        ]
-      },
-      {
-        path: 'events',
-        children: [
-          {
-            path: '',
-            loadChildren: '../events/events.module#EventsPageModule'
-          }
-        ]
-      },
-      {
-        path: 'members/directory/create-member',
-        children: [
-          {
-            path: '',
-            loadChildren: '../create-member/create-member.module#CreateMemberPageModule'
-          }
-        ]
-      },
-      {
-        path: 'members/directory/member-edit',
-        children: [
-          {
-            path: '',
-            loadChildren: '../member-edit/member-edit.module#MemberEditPageModule'
-          }
-        ]
-      },
-      {
-        path: 'members/directory/member-detail',
-        children: [
-          {
-            path: '',
-            loadChildren: '../member-detail/member-detail.module#MemberDetailPageModule'
-          }
-        ]
-      },
-      {
-        path: 'members/directory',
-        children: [
-          {
-            path: '',
-            loadChildren: '../members-list/members-list.module#MembersListPageModule'
-          }
-        ]
-      },
-      {
-        path: 'members',
-        children: [
-          {
-            path: '',
-            loadChildren: '../members/members.module#MembersPageModule'
-          }
-        ]
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/announcements',
-        pathMatch: 'full'
-      }
+      { path: 'announcements', loadChildren: '../announcements/announcements.module#AnnouncementsPageModule' },
+      { path: 'events', loadChildren: '../events/events.module#EventsPageModule' },
+      { path: 'members', loadChildren: '../members/members.module#MembersPageModule' },
+      { path: '**', redirectTo: 'announcements', pathMatch: 'full' }
     ]
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/announcements',
-    pathMatch: 'full'
   }
 ];
 

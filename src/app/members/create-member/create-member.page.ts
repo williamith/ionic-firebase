@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MembersService } from '../services/members/members.service';
-import { Member } from './../models/member';
+import { MembersService } from '../shared/members.service';
+import { Member } from '../shared/member';
 import { ToastController } from '@ionic/angular';
 
 @Component({

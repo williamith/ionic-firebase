@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MembersService } from './../services/members/members.service';
+import { MembersService } from './shared/members.service';
 
 @Component({
   selector: 'app-members',
@@ -13,7 +13,7 @@ export class MembersPage implements OnInit {
   ngOnInit() {}
 
   goToMembersList(membership: string) {
-    this.membersService.selectedMembership = membership;
-    this.router.navigate(['tabs/members/directory']);
+    this.membersService.membership = membership;
+    this.router.navigateByUrl('/directory');
   }
 }

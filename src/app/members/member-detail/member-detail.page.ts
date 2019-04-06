@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MembersService } from '../services/members/members.service';
+import { MembersService } from '../shared/members.service';
 
 @Component({
   selector: 'app-member-detail',

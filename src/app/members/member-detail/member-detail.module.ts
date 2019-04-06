@@ -8,10 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { MemberDetailPage } from './member-detail.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: MemberDetailPage
-  }
+  { path: '', component: MemberDetailPage }
 ];
 
 @NgModule({

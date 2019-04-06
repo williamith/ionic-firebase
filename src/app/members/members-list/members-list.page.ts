@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MembersService } from './../services/members/members.service';
-import { Member } from '../models/member';
+import { MembersService } from '../shared/members.service';
+import { Member } from '../shared/member';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./members-list.page.scss'],
 })
 export class MembersListPage implements OnInit {
-  members$: Observable<Member[]>;
+  members: Observable<any[]>;
   membership: string;
   membersArray: Member[] = [];
   observable: any;

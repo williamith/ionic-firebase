@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MembersService } from './../services/members/members.service';
+import { MembersService } from '../shared/members.service';
 import { ToastController, ActionSheetController } from '@ionic/angular';
-import { Member } from '../models/member';
+import { Member } from '../shared/member';
 
 @Component({
   selector: 'app-member-edit',

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebaseConfig: {
+  firebase: {
     apiKey: "AIzaSyB65E4W1Z0FoH8GOfsXydbBaDnDiBO5B3Y",
     authDomain: "gmisdatabase.firebaseapp.com",
     databaseURL: "https://gmisdatabase.firebaseio.com",

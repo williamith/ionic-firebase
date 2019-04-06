@@ -6,7 +6,7 @@
       </ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="goToCreateMember()">
+      <ion-button (click)="viewCreateMemberPage()">
         <ion-icon slot="icon-only" name="add"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -15,17 +15,17 @@
 
 <ion-content>
   <ion-list>
-    <ion-item detail="true" *ngFor="let member of members | async; let i = index"
-      (click)="goToMemberDetailsPage(i)">
+    <ion-item detail="true" *ngFor="let member of members | async"
+      (click)="viewMemberDetailsPage(member)">
       <ion-grid>
         <ion-row>
-          <ion-label>{{member["Last Name"]}}, {{member["First Name"]}}</ion-label>
+          <ion-label>{{member.lastName}}, {{member.firstName}}</ion-label>
         </ion-row>
         <ion-row>
-          <ion-note color="medium">{{member["Title"]}}</ion-note>
+          <ion-note color="medium">{{member.title}}</ion-note>
         </ion-row>
         <ion-row>
-          <ion-note>{{member["Company"]}}</ion-note>
+          <ion-note>{{member.company}}</ion-note>
         </ion-row>
       </ion-grid>
     </ion-item>

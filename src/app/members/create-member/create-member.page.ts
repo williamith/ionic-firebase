@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MembersService } from '../shared/members.service';
 import { Member } from '../shared/member';
+import { MembersService } from '../shared/members.service';
+import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -10,43 +10,28 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./create-member.page.scss'],
 })
 export class CreateMemberPage implements OnInit {
-  // As user enters form data store it here
-  member: Member = {
-    ['First Name']: '',
-    ['Last Name']: '',
-    ['Email']: '',
-    ['Phone']: '',
-    ['Membership']: '',
-    ['Address Line 1']: '',
-    ['Address Line 2']: '',
-    ['City']: '',
-    ['State']: '',
-    ['Zip']: '',
-    ['Title']: '',
-    ['Company']: ''
-  }
+  member: Member = {firstName: '', lastName: '', email: '', phone: '', membership: this.membersService.membership, address1: '', address2: '', city: '', state: '', zip: '', title: '', company: ''}
 
-  constructor(private router: Router, private membersService: MembersService, public toastController: ToastController) {}
+  constructor(private membersService: MembersService, private router: Router, public toastController: ToastController) {}
 
-  ngOnInit() {
-    this.member['Membership'] = this.membersService.membership;
-  }
+  ngOnInit() {}
 
-  goBackToMembersDirectoryPage() {
-    this.router.navigate(['tabs/members/directory']);
+  viewMembersDirectoryPage() {
+    this.router.navigate(['app/members/directory']);
   }
 
   createMember() {
-    this.membersService.createMember(this.member).then(ref => {
-      console.log(ref.key);
-      this.router.navigate(['tabs/members/directory']);
-      this.presentToastWithOptions();
-    })
+    this.membersService.createMember(this.member)
+      .then(memberRef => {
+        console.log(`Member with id of ${memberRef.id} is added`);
+        this.router.navigate(['app/members/directory']);
+        this.presentToastMemberCreated();
+      });
   }
 
-  async presentToastWithOptions() {
+  async presentToastMemberCreated() {
     const toast = await this.toastController.create({
-      message: 'Member created successfully',
+      message: `Member added successfully`,
       showCloseButton: true,
       position: 'bottom',
       closeButtonText: 'Close',
@@ -55,5 +40,4 @@ export class CreateMemberPage implements OnInit {
     });
     toast.present();
   }
-
 }

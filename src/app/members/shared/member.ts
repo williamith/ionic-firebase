@@ -1,15 +1,15 @@
 export interface Member {
-    key?: string;
-    ['First Name']: string;
-    ['Last Name']: string;
-    ['Email']: string;
-    ['Phone']: string;
-    ['Membership']: string;
-    ['Address Line 1']: string;
-    ['Address Line 2']: string;
-    ['City']: string;
-    ['State']: string;
-    ['Zip']: string;
-    ['Title']: string;
-    ['Company']: string;
+    id?: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    membership: string;
+    address1: string;
+    address2: string;
+    city: string;
+    state: string;
+    zip: string;
+    title: string;
+    company: string;
 }

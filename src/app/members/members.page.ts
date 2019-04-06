@@ -12,8 +12,8 @@ export class MembersPage implements OnInit {
 
   ngOnInit() {}
 
-  goToMembersList(membership: string) {
+  viewMembersListPage(membership: string) {
     this.membersService.membership = membership;
-    this.router.navigateByUrl('/directory');
+    this.router.navigate(['/app/members/directory']);
   }
 }

@@ -9,17 +9,15 @@ import { MembersService } from '../shared/members.service';
 })
 export class MemberDetailPage implements OnInit {
   member: any;
-  memberId: any;
 
-  constructor(private router: Router, private membersService: MembersService) {}
+  constructor(private membersService: MembersService, private router: Router, ) {}
 
   ngOnInit() {
-    this.member = this.membersService.member
-    console.log(`From Member Detail Page: ${this.membersService.member.key.toString()}`);
+    this.member = this.membersService.member;
   }
 
-  goToMemberEditPage() {
-    this.router.navigateByUrl('members/directory/member-edit');
+  viewMemberEditPage() {
+    this.router.navigateByUrl('app/members/directory/member-edit');
   }
 
 }

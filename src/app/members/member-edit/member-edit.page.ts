@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { MembersService } from '../shared/members.service';
-import { ToastController, ActionSheetController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { ActionSheetController, ToastController } from '@ionic/angular';
 import { Member } from '../shared/member';
 
 @Component({
@@ -11,15 +12,16 @@ import { Member } from '../shared/member';
 })
 export class MemberEditPage implements OnInit {
   member: Member;
-  memberId: any;
 
-  constructor(private router: Router, private membersService: MembersService, public toastController: ToastController, public actionSheetController: ActionSheetController) {}
+  constructor(
+    private membersService: MembersService,
+    public actionSheetController: ActionSheetController,
+    private router: Router,
+    public toastController: ToastController
+  ) {}
 
   ngOnInit() {
     this.member = this.membersService.member;
-    this.memberId = this.membersService.memberId;
-    console.log(this.member);
-    console.log(this.memberId);
   }
 
   async presentActionSheet() {
@@ -29,9 +31,11 @@ export class MemberEditPage implements OnInit {
         role: 'destructive',
         icon: 'trash',
         handler: () => {
-          this.membersService.deleteMember(this.membersService.member);
-          this.router.navigate(['tabs/members']);
-          this.presentToastWithOptions();
+          this.membersService.deleteMember(this.member.id)
+            .then(memberRef => {
+              this.router.navigate(['app/members/directory']);
+              this.presentToastMemberDeleted();
+            });
         }
       }, {
         text: 'Cancel',
@@ -45,7 +49,7 @@ export class MemberEditPage implements OnInit {
     await actionSheet.present();
   }
 
-  async presentToastWithOptions() {
+  async presentToastMemberDeleted() {
     const toast = await this.toastController.create({
       message: 'Member deleted successfully',
       showCloseButton: true,
@@ -56,11 +60,4 @@ export class MemberEditPage implements OnInit {
     });
     toast.present();
   }
-  // removeMember(member: Member) {
-  //   this.membersService.deleteMember(member)
-  //     .then(() => {
-  //       this.router.navigate(['tabs/members']);
-  //       this.presentToastWithOptions();
-  //     })
-  // }
 }

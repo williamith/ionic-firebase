@@ -6,7 +6,7 @@
       </ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="goToMemberEditPage()">Edit</ion-button>
+      <ion-button (click)="viewMemberEditPage()">Edit</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -16,28 +16,28 @@
     <ion-item>
       <ion-grid>
         <ion-row>
-          <ion-label class="header">{{member["First Name"]}} {{member["Last Name"]}}</ion-label>
+          <ion-label class="header">{{member.firstName}} {{member.lastName}}</ion-label>
         </ion-row>
         <ion-row>
-          <ion-label>{{member["Title"]}}</ion-label>
+          <ion-label>{{member.title}}</ion-label>
         </ion-row>
         <ion-row>
-          <ion-note>{{member["Company"]}}</ion-note>
+          <ion-note>{{member.company}}</ion-note>
         </ion-row>
         <ion-row>
-          <ion-note>{{member["Email"]}}</ion-note>
+          <ion-note>{{member.email}}</ion-note>
         </ion-row>
         <ion-row>
-          <ion-note>{{member["Phone"]}}</ion-note>
+          <ion-note>{{member.phone}}</ion-note>
         </ion-row>
         <ion-row>
-          <ion-note>{{member["Address 1"]}}</ion-note>
+          <ion-note>{{member.address1}}</ion-note>
         </ion-row>
         <ion-row>
-          <ion-note>{{member["Address 2"]}}</ion-note>
+          <ion-note>{{member.address2}}</ion-note>
         </ion-row>
         <ion-row>
-          <ion-note>{{member["City"]}}, {{member["State"]}} {{member["Zip"]}}</ion-note>
+          <ion-note>{{member.city}}, {{member.state}} {{member.zip}}</ion-note>
         </ion-row>
       </ion-grid>
     </ion-item>

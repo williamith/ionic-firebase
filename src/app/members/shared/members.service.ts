@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class MembersService {
   membership: string;
-  member: any;
+  member: Member;
 
   constructor(private db: AngularFirestore) { }
 
@@ -18,7 +18,11 @@ export class MembersService {
   }
 
   readMembers(): Observable<Member[]> {
-    return this.db.collection<Member>('members', ref => ref.where('membership', '==', this.membership))
+    this.db.collection<Member>('members', ref => ref.where('membership', '==', 'Geek Trak'))
+      .get().subscribe(response => {
+        console.log(response);
+      });
+    return this.db.collection<Member>('members')
       .snapshotChanges()
       .pipe(
         map(actions => {
@@ -47,10 +51,4 @@ export class MembersService {
   deleteMember(id: string): Promise<any> {
     return this.db.doc(`members/${id}`).delete();
   }
-
-  // readMembers() {
-  //   return this.membersRef.query.orderByChild('Membership').equalTo(this.membership).on('value', function (snapshot) {
-  //     console.log(Object.values(snapshot.val()));
-  //   });
-  // }
 }

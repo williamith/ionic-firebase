@@ -27,7 +27,7 @@ export class MemberEditPage implements OnInit {
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
       buttons: [{
-        text: 'Delete',
+        text: 'Delete Member',
         role: 'destructive',
         icon: 'trash',
         handler: () => {

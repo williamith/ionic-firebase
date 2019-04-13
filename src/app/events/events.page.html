@@ -6,4 +6,62 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content class="card-background-page">
+  <ion-item>
+    <ion-segment>
+      <ion-segment-button value="fullAgenda">
+        <ion-label>Full Agenda</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="myAgenda">
+        <ion-label>My Agenda</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-item>
+
+  <ion-item>
+    <ion-segment>
+      <ion-segment-button value="sunday">
+        <ion-label>Sun</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="monday">
+        <ion-label>Mon</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="tuesday">
+        <ion-label>Tue</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="wednesday">
+        <ion-label>Wed</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="thursday">
+        <ion-label>Thu</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="friday">
+        <ion-label>Fri</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="saturday">
+        <ion-label>Sat</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-item>
+
+  <ion-list>
+    <ion-item detail="true" *ngFor="let event of events | async" (click)="viewEventDetailsPage(event)">
+      <ion-grid>
+        <ion-row>
+          <ion-label color="primary">{{event.startDateTime | date: 'EEEE'}} {{event.startDateTime | date: 'MMM d'}}
+          </ion-label>
+          <ion-label color="primary">({{event.startDateTime | date: 'shortTime'}} -
+            {{event.endDateTime | date: 'shortTime'}})</ion-label>
+        </ion-row>
+
+        <ion-row>
+          <ion-label>{{event.membership}} - {{event.name}}</ion-label>
+        </ion-row>
+
+        <ion-row>
+          <ion-note color="primary">{{event.note}}</ion-note>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

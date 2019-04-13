@@ -26,11 +26,11 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'members',
+        path: 'speakers',
         children: [
           {
             path: '',
-            loadChildren: '../members/members.module#MembersPageModule'
+            loadChildren: '../speakers/speakers.module#SpeakersPageModule'
           }
         ]
       },

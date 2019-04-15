@@ -16,16 +16,21 @@ export class EventsPage {
   constructor(private eventsService: EventsService) { }
 
   ngOnInit() {
-    this.eventsService.getEvents().subscribe(
-      response => {
-        this.events = Object.values(response);
-        this.filteredEvents = Object.values(response);
-      },
-      error => console.log(error)
-    );
+    this.eventsService.getEvents()
+      .subscribe(
+        response => {
+          this.events = Object.values(response);
+          this.filteredEvents = Object.values(response);
+        },
+        error => console.log(error)
+      );
   }
 
   segmentChanged(event: any) {
-    console.log(event.detail.value);
+    this.filteredEvents = this.events
+      .filter(response => {
+        let day: number = new Date(response.start).getDay();
+        return day === parseInt(event.detail.value);
+      });
   }
 }

@@ -14,20 +14,20 @@
     <ion-segment-button value="myAgenda">
       <ion-label>My Agenda</ion-label>
     </ion-segment-button>
-  </ion-segment>
-
-  <ion-segment (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="sunday">Sun</ion-segment-button>
-    <ion-segment-button value="monday">Mon</ion-segment-button>
-    <ion-segment-button value="tuesday">Tue</ion-segment-button>
-    <ion-segment-button value="wednesday">Wed</ion-segment-button>
-    <ion-segment-button value="thursday">Thu</ion-segment-button>
-    <ion-segment-button value="friday">Fri</ion-segment-button>
-    <ion-segment-button value="saturday">Sat</ion-segment-button>
   </ion-segment> -->
 
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="0">Sun</ion-segment-button>
+    <ion-segment-button value="1">Mon</ion-segment-button>
+    <ion-segment-button value="2">Tue</ion-segment-button>
+    <ion-segment-button value="3">Wed</ion-segment-button>
+    <ion-segment-button value="4">Thu</ion-segment-button>
+    <ion-segment-button value="5">Fri</ion-segment-button>
+    <ion-segment-button value="6">Sat</ion-segment-button>
+  </ion-segment>
+
   <ion-list>
-    <ion-item detail="true" *ngFor="let event of events">
+    <ion-item detail="true" *ngFor="let event of filteredEvents">
       <ion-grid>
         <ion-row>
           <ion-label color="primary">{{event.start | date: 'EEEE'}} {{event.start | date: 'MMM d'}}

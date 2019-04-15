@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Event } from './shared/event';
+import { Component, OnDestroy } from '@angular/core';
 import { EventsService } from './shared/events.service';
-import { Router } from '@angular/router';
+import { SegmentChangeEventDetail } from '@ionic/core';
+import { map, filter } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-events',
@@ -10,16 +10,24 @@ import { Router } from '@angular/router';
   styleUrls: ['events.page.scss']
 })
 export class EventsPage {
-  events: Observable<Event[]>;
+  events = [];
+  filteredEvents = [];
 
-  constructor(private eventsService: EventsService, private router: Router) {}
+  constructor(private eventsService: EventsService) { }
 
   ngOnInit() {
-    this.events = this.eventsService.readEvents();
+    this.eventsService.getEvents().subscribe(
+      response => {
+        this.events = response;
+        this.filteredEvents = response;
+      },
+      error => console.log(error)
+    );
+
+    console.log(this.filteredEvents);
   }
 
-  viewEventDetailsPage(event: Event) {
-  this.eventsService.event = event;
-  this.router.navigate(['app/events/event-detail']);
+  segmentChanged(event: any) {
+    console.log(event.detail.value);
   }
 }

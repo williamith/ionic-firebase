@@ -7,45 +7,27 @@
 </ion-header>
 
 <ion-content class="card-background-page">
-  <ion-item>
-    <ion-segment>
-      <ion-segment-button value="fullAgenda">
-        <ion-label>Full Agenda</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="myAgenda">
-        <ion-label>My Agenda</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </ion-item>
+  <!-- <ion-segment>
+    <ion-segment-button value="fullAgenda">
+      <ion-label>Full Agenda</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="myAgenda">
+      <ion-label>My Agenda</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-  <ion-item>
-    <ion-segment>
-      <ion-segment-button value="sunday">
-        <ion-label>Sun</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="monday">
-        <ion-label>Mon</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="tuesday">
-        <ion-label>Tue</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="wednesday">
-        <ion-label>Wed</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="thursday">
-        <ion-label>Thu</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="friday">
-        <ion-label>Fri</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="saturday">
-        <ion-label>Sat</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </ion-item>
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="sunday">Sun</ion-segment-button>
+    <ion-segment-button value="monday">Mon</ion-segment-button>
+    <ion-segment-button value="tuesday">Tue</ion-segment-button>
+    <ion-segment-button value="wednesday">Wed</ion-segment-button>
+    <ion-segment-button value="thursday">Thu</ion-segment-button>
+    <ion-segment-button value="friday">Fri</ion-segment-button>
+    <ion-segment-button value="saturday">Sat</ion-segment-button>
+  </ion-segment> -->
 
   <ion-list>
-    <ion-item detail="true" *ngFor="let event of events | async" (click)="viewEventDetailsPage(event)">
+    <ion-item detail="true" *ngFor="let event of events">
       <ion-grid>
         <ion-row>
           <ion-label color="primary">{{event.startDateTime | date: 'EEEE'}} {{event.startDateTime | date: 'MMM d'}}

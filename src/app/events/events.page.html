@@ -30,14 +30,12 @@
     <ion-item detail="true" *ngFor="let event of events">
       <ion-grid>
         <ion-row>
-          <ion-label color="primary">{{event.startDateTime | date: 'EEEE'}} {{event.startDateTime | date: 'MMM d'}}
-          </ion-label>
-          <ion-label color="primary">({{event.startDateTime | date: 'shortTime'}} -
-            {{event.endDateTime | date: 'shortTime'}})</ion-label>
+          <ion-label color="primary">{{event.start | date: 'EEEE'}} {{event.start | date: 'MMM d'}}
+            ({{event.start | date: 'shortTime'}} - {{event.end | date: 'shortTime'}})</ion-label>
         </ion-row>
 
         <ion-row>
-          <ion-label>{{event.membership}} - {{event.name}}</ion-label>
+          <ion-label>{{event.membership}} - {{event.event}}</ion-label>
         </ion-row>
 
         <ion-row>

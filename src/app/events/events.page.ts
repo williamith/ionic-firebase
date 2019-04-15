@@ -18,13 +18,11 @@ export class EventsPage {
   ngOnInit() {
     this.eventsService.getEvents().subscribe(
       response => {
-        this.events = response;
-        this.filteredEvents = response;
+        this.events = Object.values(response);
+        this.filteredEvents = Object.values(response);
       },
       error => console.log(error)
     );
-
-    console.log(this.filteredEvents);
   }
 
   segmentChanged(event: any) {

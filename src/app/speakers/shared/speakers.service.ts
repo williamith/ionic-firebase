@@ -1,19 +1,17 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Speaker } from './speaker';
-import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpeakersService {
-  url: string = 'https://gmisdatabase.firebaseio.io/Speakers.json';
-  speaker: Speaker;
+  url = 'https://gmisdatabase.firebaseio.com/speakers.json';
 
   constructor(private http: HttpClient) { }
 
-  readSpeakers(): Observable<Speaker[]> {
-    return this.http.get<Speaker[]>(this.url);
+  getEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(this.url);
   }
 }

@@ -35,6 +35,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'locations',
+        children: [
+          {
+            path: '',
+            loadChildren: '../locations/locations.module#LocationsPageModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/app/announcements',
         pathMatch: 'full'

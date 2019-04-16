@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Speaker } from './shared/speaker';
 import { SpeakersService } from './shared/speakers.service';
 import { Router } from '@angular/router';
 
@@ -10,11 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./speakers.page.scss'],
 })
 export class SpeakersPage implements OnInit {
-  speakers: Observable<Speaker[]>;
+  speakers = [];
 
   constructor(private speakersService: SpeakersService, private router: Router) {}
 
   ngOnInit() {
-    this.speakers = this.speakersService.readSpeakers();
+    this.speakersService.getSpeakers()
+      .subscribe(
+        response => this.speakers = Object.values(response),
+        error => console.log(error)
+      );
   }
 }

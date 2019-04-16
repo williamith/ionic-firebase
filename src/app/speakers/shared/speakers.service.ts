@@ -11,7 +11,7 @@ export class SpeakersService {
 
   constructor(private http: HttpClient) { }
 
-  getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.url);
+  getSpeakers(): Observable<Speaker[]> {
+    return this.http.get<Speaker[]>(this.url);
   }
 }

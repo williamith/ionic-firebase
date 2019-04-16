@@ -4,6 +4,13 @@
       Events
     </ion-title>
   </ion-toolbar>
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="0">Sun</ion-segment-button>
+    <ion-segment-button value="1">Mon</ion-segment-button>
+    <ion-segment-button value="2">Tue</ion-segment-button>
+    <ion-segment-button value="3">Wed</ion-segment-button>
+    <ion-segment-button value="4">Thu</ion-segment-button>
+  </ion-segment>
 </ion-header>
 
 <ion-content class="card-background-page">
@@ -16,30 +23,20 @@
     </ion-segment-button>
   </ion-segment> -->
 
-  <ion-segment (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="0">Sun</ion-segment-button>
-    <ion-segment-button value="1">Mon</ion-segment-button>
-    <ion-segment-button value="2">Tue</ion-segment-button>
-    <ion-segment-button value="3">Wed</ion-segment-button>
-    <ion-segment-button value="4">Thu</ion-segment-button>
-    <ion-segment-button value="5">Fri</ion-segment-button>
-    <ion-segment-button value="6">Sat</ion-segment-button>
-  </ion-segment>
-
-  <ion-list>
+  <ion-list no-padding>
     <ion-item detail="true" *ngFor="let event of filteredEvents">
       <ion-grid>
         <ion-row>
-          <ion-label color="primary">{{event.start | date: 'EEEE'}} {{event.start | date: 'MMM d'}}
-            ({{event.start | date: 'shortTime'}} - {{event.end | date: 'shortTime'}})</ion-label>
+          <ion-label color="primary">{{event.start | date: 'shortTime'}} - {{event.end | date: 'shortTime'}}</ion-label>
         </ion-row>
-
         <ion-row>
-          <ion-label>{{event.membership}} - {{event.event}}</ion-label>
+          <ion-label>{{event.name}}</ion-label>
         </ion-row>
-
         <ion-row>
-          <ion-note color="primary">{{event.note}}</ion-note>
+          <ion-note color="tertiary">{{event.note}}</ion-note>
+        </ion-row>
+        <ion-row>
+          <ion-note>{{event.location}}</ion-note>
         </ion-row>
       </ion-grid>
     </ion-item>

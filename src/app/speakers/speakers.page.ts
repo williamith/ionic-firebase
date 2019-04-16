@@ -19,4 +19,9 @@ export class SpeakersPage implements OnInit {
         error => console.log(error)
       );
   }
+
+  onClickedViewSpeakerBio(speaker: any) {
+    this.speakersService.speaker = speaker;
+    this.router.navigate(['app', 'speakers', 'speaker-bio']);
+  }
 }

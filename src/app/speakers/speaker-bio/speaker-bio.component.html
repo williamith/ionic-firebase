@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{speaker.firstName}} {{speaker.lastName}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid padding>
+    <ion-row class="pb-1" justify-content-center>
+      <img src="{{speaker.imageUrl}}">
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-label color="primary">
+        <h1>{{speaker.firstName}}, {{speaker.role}}</h1>
+      </ion-label>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-label>{{speaker.title}}</ion-label>
+    </ion-row>
+    <ion-row class="pb-1" justify-content-center>
+      <ion-label>{{speaker.company}}</ion-label>
+    </ion-row>
+    <ion-row class="pb-1">
+      <ion-note class="justify" color="dark">{{speaker.bio}}</ion-note>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-label color="medium">{{speaker.address1}}</ion-label>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-label color="medium">{{speaker.city}}, {{speaker.state}} {{speaker.zip}}</ion-label>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-label color="medium">{{speaker.phone1}}</ion-label>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-label color="medium">{{speaker.email}}</ion-label>
+    </ion-row>
+  </ion-grid>
+</ion-content>

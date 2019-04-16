@@ -4,8 +4,8 @@
       Events
     </ion-title>
   </ion-toolbar>
-  <ion-segment (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="0">Sun</ion-segment-button>
+  <ion-segment scrollable="true" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="0" checked>Sun</ion-segment-button>
     <ion-segment-button value="1">Mon</ion-segment-button>
     <ion-segment-button value="2">Tue</ion-segment-button>
     <ion-segment-button value="3">Wed</ion-segment-button>
@@ -13,7 +13,7 @@
   </ion-segment>
 </ion-header>
 
-<ion-content class="card-background-page">
+<ion-content>
   <!-- <ion-segment>
     <ion-segment-button value="fullAgenda">
       <ion-label>Full Agenda</ion-label>
@@ -22,7 +22,9 @@
       <ion-label>My Agenda</ion-label>
     </ion-segment-button>
   </ion-segment> -->
-
+  <ion-item color="light">
+    <ion-title>{{day}}</ion-title>
+  </ion-item>
   <ion-list no-padding>
     <ion-item detail="true" *ngFor="let event of filteredEvents">
       <ion-grid>

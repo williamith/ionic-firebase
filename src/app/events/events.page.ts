@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class EventsPage {
   events = [];
   filteredEvents = [];
+  day = 'Sunday, April 28';
 
   constructor(private eventsService: EventsService) { }
 
@@ -22,8 +23,17 @@ export class EventsPage {
           this.events = Object.values(response);
           this.filteredEvents = Object.values(response);
         },
-        error => console.log(error)
+        error => console.log(error),
+        () => {
+          this.filteredEvents = this.events
+            .filter(response => {
+              let day: number = new Date(response.start).getDay();
+              return day === 0;
+            });
+        }
       );
+
+
   }
 
   segmentChanged(event: any) {
@@ -32,5 +42,25 @@ export class EventsPage {
         let day: number = new Date(response.start).getDay();
         return day === parseInt(event.detail.value);
       });
+
+    switch (event.detail.value) {
+      case '0':
+        this.day = 'Sunday, April 28';
+        break;
+      case '1':
+        this.day = 'Monday, April 29';
+        break;
+      case '2':
+        this.day = 'Tuesday, April 30';
+        break;
+      case '3':
+        this.day = 'Wednesday, May 1';
+        break;
+      case '4':
+        this.day = 'Thursday, May 2';
+        break;
+      default:
+        break;
+    }
   }
 }

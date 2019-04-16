@@ -1,3 +1,4 @@
+import { SpeakerBioComponent } from './speaker-bio/speaker-bio.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,6 +9,10 @@ import { IonicModule } from '@ionic/angular';
 import { SpeakersPage } from './speakers.page';
 
 const routes: Routes = [
+  {
+    path: 'speaker-bio',
+    component: SpeakerBioComponent
+  },
   {
     path: '',
     component: SpeakersPage
@@ -21,6 +26,9 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [SpeakersPage]
+  declarations: [
+    SpeakersPage,
+    SpeakerBioComponent
+  ]
 })
 export class SpeakersPageModule {}

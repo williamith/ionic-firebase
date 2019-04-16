@@ -5,36 +5,55 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let speaker of speakers">
-      <ion-grid>
-        <ion-row>
-          <ion-col size="4">
-            <img src="{{speaker.imageUrl}}">
-          </ion-col>
+  <ion-item color="light">
+    <ion-label>Click a Speaker to view their bio.</ion-label>
+  </ion-item>
+  <ion-list padding>
+    <ion-item *ngFor="let speaker of speakers" (click)="onClickedViewSpeakerBio(speaker)">
+      <ion-thumbnail slot="start">
+        <img src="{{speaker.imageUrl}}">
+      </ion-thumbnail>
+      <ion-label>
+        <h2 class="primary">{{speaker.firstName}} {{speaker.lastName}}</h2>
+        <p>{{speaker.role}}</p>
+        <p>{{speaker.title}}</p>
+      </ion-label>
+
+      <!-- <ion-grid>
+        <ion-row justify-content-center>
+          <img src="{{speaker.imageUrl}}">
         </ion-row>
         <ion-row>
-          <ion-label>{{speaker.firstName}}, {{speaker.role}}</ion-label>
+          <br>
         </ion-row>
-        <ion-row>
+        <ion-row justify-content-center>
+          <ion-label color="primary">{{speaker.firstName}}, {{speaker.role}}</ion-label>
+        </ion-row>
+        <ion-row justify-content-center>
           <ion-label>{{speaker.title}}</ion-label>
         </ion-row>
-        <ion-row>
+        <ion-row justify-content-center>
           <ion-label>{{speaker.company}}</ion-label>
         </ion-row>
-        <ion-row>
+        <ion-row justify-content-center>
           <ion-label>{{speaker.address1}}</ion-label>
         </ion-row>
-        <ion-row>
+        <ion-row justify-content-center>
           <ion-label>{{speaker.city}}, {{speaker.state}} {{speaker.zip}}</ion-label>
         </ion-row>
-        <ion-row>
+        <ion-row justify-content-center>
           <ion-label>{{speaker.phone1}}</ion-label>
         </ion-row>
-        <ion-row>
+        <ion-row justify-content-center>
           <ion-label>{{speaker.email}}</ion-label>
         </ion-row>
-      </ion-grid>
+        <ion-row>
+          <br>
+        </ion-row>
+        <ion-row>
+          <ion-note>{{speaker.bio}}</ion-note>
+        </ion-row>
+      </ion-grid> -->
     </ion-item>
   </ion-list>
 </ion-content>

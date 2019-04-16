@@ -12,4 +12,10 @@ export class LocationsPage implements OnInit {
   ngOnInit() {
   }
 
+  onClickImageZoom() {
+      let img = document.getElementById('image');
+      img.style.width = "2200px";
+      img.style.height = "1700px";
+      return img;
+  }
 }

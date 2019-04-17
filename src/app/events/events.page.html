@@ -11,6 +11,9 @@
     <ion-segment-button value="3">Wed</ion-segment-button>
     <ion-segment-button value="4">Thu</ion-segment-button>
   </ion-segment>
+  <ion-item color="light">
+    <ion-title>{{day}}</ion-title>
+  </ion-item>
 </ion-header>
 
 <ion-content>
@@ -22,11 +25,8 @@
       <ion-label>My Agenda</ion-label>
     </ion-segment-button>
   </ion-segment> -->
-  <ion-item color="light">
-    <ion-title>{{day}}</ion-title>
-  </ion-item>
   <ion-list no-padding>
-    <ion-item detail="true" *ngFor="let event of filteredEvents">
+    <ion-item *ngFor="let event of filteredEvents">
       <ion-grid>
         <ion-row>
           <ion-label color="primary">{{event.start | date: 'shortTime'}} - {{event.end | date: 'shortTime'}}</ion-label>
@@ -35,10 +35,14 @@
           <ion-label>{{event.name}}</ion-label>
         </ion-row>
         <ion-row>
-          <ion-note color="tertiary">{{event.note}}</ion-note>
+          <ion-note *ngIf="event.note" color="tertiary">
+            <ion-icon name="megaphone"></ion-icon>&nbsp;{{event.note}}
+          </ion-note>
         </ion-row>
         <ion-row>
-          <ion-note>{{event.location}}</ion-note>
+          <ion-note *ngIf="event.location">
+            <ion-icon name="pin"></ion-icon>&nbsp;{{event.location}}
+          </ion-note>
         </ion-row>
       </ion-grid>
     </ion-item>

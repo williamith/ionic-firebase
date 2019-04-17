@@ -25,22 +25,22 @@
       <ion-label>My Agenda</ion-label>
     </ion-segment-button>
   </ion-segment> -->
-  <ion-list no-padding>
+  <ion-list>
     <ion-item *ngFor="let event of filteredEvents">
       <ion-grid>
         <ion-row>
-          <ion-label color="primary">{{event.start | date: 'shortTime'}} - {{event.end | date: 'shortTime'}}</ion-label>
+          <ion-label color="primary">{{event.start | date: 'shortTime': '+0'}} - {{event.end | date: 'shortTime': '+0'}}</ion-label>
         </ion-row>
         <ion-row>
           <ion-label>{{event.name}}</ion-label>
         </ion-row>
         <ion-row>
-          <ion-note *ngIf="event.note" color="tertiary">
+          <ion-note class="pl-1" *ngIf="event.note !==''" color="tertiary">
             <ion-icon name="megaphone"></ion-icon>&nbsp;{{event.note}}
           </ion-note>
         </ion-row>
         <ion-row>
-          <ion-note *ngIf="event.location">
+          <ion-note class="pl-1" *ngIf="event.location !== ''">
             <ion-icon name="pin"></ion-icon>&nbsp;{{event.location}}
           </ion-note>
         </ion-row>

@@ -21,19 +21,19 @@ export class EventsPage {
       .subscribe(
         response => {
           this.events = Object.values(response);
+          console.log(this.events);
           this.filteredEvents = Object.values(response);
         },
         error => console.log(error),
         () => {
           this.filteredEvents = this.events
             .filter(response => {
+              console.log(response);
               let day: number = new Date(response.start).getDay();
               return day === 0;
             });
         }
       );
-
-
   }
 
   segmentChanged(event: any) {

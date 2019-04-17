@@ -44,6 +44,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'documents',
+        children: [
+          {
+            path: '',
+            loadChildren: '../documents/documents.module#DocumentsPageModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/app/announcements',
         pathMatch: 'full'

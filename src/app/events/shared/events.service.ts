@@ -7,7 +7,7 @@ import { Event } from './event';
   providedIn: 'root'
 })
 export class EventsService {
-  url = 'https://gmisdatabase.firebaseio.com/events.json';
+  url = 'https://gmisconference2019.firebaseio.com/events.json';
 
   constructor(private http: HttpClient) { }
 

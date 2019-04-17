@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SpeakersService {
-  url = 'https://gmisdatabase.firebaseio.com/speakers.json';
+  url = 'https://gmisconference2019.firebaseio.com/speakers.json';
   speaker: Speaker;
 
   constructor(private http: HttpClient) { }

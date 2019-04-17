@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Documents</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item color="light">Choose a document to open.</ion-item>
+  <ion-list *ngFor="let document of documents">
+    <ion-item lines="none">
+      <a href="{{document.documentUrl}}">
+        <ion-label text-wrap>{{document.name}}</ion-label>
+      </a>
+      <ion-icon color="dark" name="document" slot="start"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

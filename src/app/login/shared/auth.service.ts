@@ -35,7 +35,7 @@ export class AuthService {
       if (x) {
         this.userIsAuthenticated = true;
         console.log("Successfully logged in!");
-        this.router.navigate(['app', 'announcements']);
+        this.router.navigate(['sponsors']);
       }
     }
     catch (err) {

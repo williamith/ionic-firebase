@@ -2,6 +2,7 @@ import { User } from './user';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   private userIsAuthenticated = false;
 
-  constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
+  constructor(private angularFireAuth: AngularFireAuth, private router: Router, private toastController: ToastController) {
     this.angularFireAuth.authState.subscribe((user: firebase.User) => {
       if (user) {
         console.log("The user is logged in!");
@@ -38,6 +39,7 @@ export class AuthService {
       }
     }
     catch (err) {
+      this.presentToast();
       console.error(err);
     }
   }
@@ -46,7 +48,18 @@ export class AuthService {
     this.angularFireAuth.auth.signOut()
       .then(() => {
         this.userIsAuthenticated = false;
-        this.router.navigate(['login']);
       });
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: `Incorrect username or password.`,
+      showCloseButton: false,
+      position: 'bottom',
+      closeButtonText: 'Close',
+      color: 'danger',
+      duration: 3000
+    });
+    toast.present();
   }
 }

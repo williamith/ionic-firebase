@@ -46,6 +46,7 @@ export class AuthService {
     this.angularFireAuth.auth.signOut()
       .then(() => {
         this.userIsAuthenticated = false;
+        this.router.navigate(['login']);
       });
   }
 }

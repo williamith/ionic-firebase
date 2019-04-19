@@ -8,7 +8,7 @@ import { User } from './shared/user';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  private user: User = {
+  public user: User = {
     email: '',
     password: ''
   };
